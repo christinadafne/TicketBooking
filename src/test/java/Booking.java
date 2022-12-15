@@ -1,3 +1,5 @@
+import org.testng.annotations.Test;
+import org.testng.AssertJUnit;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
@@ -28,7 +30,8 @@ public class Booking {
 		 WebElement customer=driver.findElement(By.linkText("Customer Login"));
 		 act.moveToElement(customer).build().perform();
 		 Thread.sleep(5000);
-		 WebElement userlogin=driver.findElement(By.linkText("User Login"));
+		 WebElement userlogin=driver.findElement(By.xpath("(//a[text()=' Customer Login ']//following-sibling::ul//a[text()='User Login'])[2]"));
+				 //driver.findElement(By.linkText("User Login"));
 		 act.moveToElement(userlogin).click().build().perform();
 		 Thread.sleep(5000);
 		 driver.findElement(By.id("sign_user_email")).sendKeys("admintest@test.com");
@@ -49,7 +52,7 @@ public class Booking {
 		 Thread.sleep(2000);
 		 driver.findElement(By.xpath("//div[@class='searchBtncntr']//button[@type='submit']")).click();
 		 Thread.sleep(2000);
-		 driver.findElement(By.xpath("//input[@class='form-control']")).sendKeys("14/12/2022");
+		 driver.findElement(By.xpath("//input[@class='form-control']")).sendKeys("20/12/2022");
 		WebElement themes= driver.findElement(By.id("themes"));
 		Select opt1=new Select(themes);
 		opt1.selectByIndex(4);
@@ -57,7 +60,7 @@ public class Booking {
 		 Thread.sleep(2000);
 		 String expect="Canada Tour Packages";
 		 String actual=driver.findElement(By.xpath("//h1[text()='Canada  Tour Packages']")).getText();
-		 Assert.assertEquals(actual, expect);
+		 AssertJUnit.assertEquals(actual, expect);
 		 Thread.sleep(2000);
 		 driver.close();
 	}
