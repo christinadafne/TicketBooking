@@ -58,9 +58,12 @@ public class Booking {
 		opt1.selectByIndex(4);
 		driver.findElement(By.xpath("(//button[@type='submit'])[2]")).click();
 		 Thread.sleep(2000);
-		 String expect="Canada Tour Packages";
-		 String actual=driver.findElement(By.xpath("//h1[text()='Canada  Tour Packages']")).getText();
-		 AssertJUnit.assertEquals(actual, expect);
+		 driver.findElement(By.xpath("//div[text()='View Itinerary'][1]")).click();
+		 String actual=driver.findElement(By.xpath("//button[text()='SEND ENQUIRY']")).getText();
+		 //String expect="Canada Tour Packages";
+		 String expect="SEND ENQUIRY";
+		// String actual=driver.findElement(By.xpath("//h1[text()='Canada  Tour Packages']")).getText();
+		 Assert.assertEquals(actual, expect);
 		 Thread.sleep(2000);
 		 driver.close();
 	}
